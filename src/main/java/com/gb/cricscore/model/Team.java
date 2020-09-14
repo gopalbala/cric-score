@@ -12,6 +12,7 @@ public class Team {
     private List<Player> players;
     private List<Coach> coaches;
     private List<Physicio> physicios;
+    private Manager manager;
 
     public Team(String name) {
         this.name = name;
