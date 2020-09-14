@@ -1,4 +1,4 @@
-package com.gb.cricscore.model;
+package com.gb.cricscore.model.people;
 
 import lombok.Getter;
 import lombok.Setter;
