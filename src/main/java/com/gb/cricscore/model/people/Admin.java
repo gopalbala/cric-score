@@ -12,6 +12,10 @@ import com.gb.cricscore.repository.DataSink;
 import java.util.ArrayList;
 
 public class Admin extends Person {
+    public Admin(String name) {
+        super(name);
+    }
+
     public void addTournament(Tournament tournament) {
         DataSink.tournamentMap.putIfAbsent(tournament.getName(), tournament);
     }
