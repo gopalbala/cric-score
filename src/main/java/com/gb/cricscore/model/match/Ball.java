@@ -11,4 +11,6 @@ public class Ball {
     private String bowledBy;
     private String facedBy;
     private int runsScored;
+    private Wicket wicket;
+    private Commentary commentary;
 }
