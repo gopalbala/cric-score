@@ -1,6 +1,8 @@
 package com.gb.cricscore.model.people;
 
+import com.gb.cricscore.model.match.Fixture;
 import com.gb.cricscore.model.match.Match;
+import com.gb.cricscore.model.match.Stadium;
 import com.gb.cricscore.model.match.Tournament;
 
 public class Admin extends Person {
@@ -29,6 +31,14 @@ public class Admin extends Person {
     }
 
     public void addScorer(Scorer scorer) {
+
+    }
+
+    public void addStadium(Stadium stadium) {
+
+    }
+
+    public void addFixture(Fixture fixture) {
 
     }
 }
