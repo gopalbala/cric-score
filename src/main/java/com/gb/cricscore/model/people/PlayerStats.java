@@ -9,10 +9,17 @@ import java.util.Map;
 @Getter
 @Setter
 public class PlayerStats {
-    private Map<MatchType, Integer> matchesPlayed;
-    private Map<MatchType, Integer> runsScored;
-    private Map<MatchType, Integer> oversBowled;
-    private Map<MatchType, Integer> wicketsTaken;
-    private Map<MatchType, Integer> catchesTaken;
-    private Map<MatchType, Integer> stumping;
+    private Map<MatchType, Stats> playerStatistics;
+
+    @Getter
+    @Setter
+    private static class Stats {
+        private float oversBowled;
+        private float runsScored;
+        private int wicketsTaken;
+        private int catchesTaken;
+        private int stumping;
+        private float econ;
+        private float avg;
+    }
 }
