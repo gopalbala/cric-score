@@ -1,5 +1,34 @@
 package com.gb.cricscore.model.people;
 
-public class Admin extends Person {
+import com.gb.cricscore.model.match.Match;
+import com.gb.cricscore.model.match.Tournament;
 
+public class Admin extends Person {
+    public void addTournament(Tournament tournament) {
+
+    }
+
+    public void addMatch(Match match) {
+
+    }
+
+    public void addTeam(Team team) {
+
+    }
+
+    public void addPlayer(Player player, String team) {
+
+    }
+
+    public void addUmpire(Umpire umpire) {
+
+    }
+
+    public void addCommentator(Commentator commentator) {
+
+    }
+
+    public void addScorer(Scorer scorer) {
+
+    }
 }
