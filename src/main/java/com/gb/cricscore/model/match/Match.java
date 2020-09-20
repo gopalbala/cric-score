@@ -14,10 +14,14 @@ public class Match {
     private Tournament tournament;
     private final PlayedTeams playedTeams;
     private String venue;
+    private Toss toss;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
     private List<Umpire> umpires;
     private String winner;
+    private String lost;
+    private MatchResult matchResult;
+    private List<Innings> innings;
 
     public Match(PlayedTeams playedTeams) {
         this.playedTeams = playedTeams;
