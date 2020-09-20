@@ -9,6 +9,8 @@ import com.gb.cricscore.model.match.Stadium;
 import com.gb.cricscore.model.match.Tournament;
 import com.gb.cricscore.repository.DataSink;
 
+import java.util.ArrayList;
+
 public class Admin extends Person {
     public void addTournament(Tournament tournament) {
         DataSink.tournamentMap.putIfAbsent(tournament.getName(), tournament);
@@ -32,9 +34,9 @@ public class Admin extends Person {
     }
 
     public void addPlayer(Player player, String team, String tour) throws InvalidTeamException, InvalidTournamentException {
-        if (DataSink.tournamentMap.get(team) == null)
+        if (DataSink.tournamentMap.get(tour) == null)
             throw new InvalidTournamentException("Invalid tournament");
-        if (DataSink.teamMap.get(tour) == null)
+        if (DataSink.teamMap.get(team) == null)
             throw new InvalidTeamException("Invalid team");
         DataSink.teamMap.get(team)
                 .getPlayers().add(player);
@@ -65,7 +67,11 @@ public class Admin extends Person {
         DataSink.stadiumMap.putIfAbsent(stadium.getName(), stadium);
     }
 
-    public void addFixture(Fixture fixture) {
-
+    public void addFixture(Fixture fixture, String tournament) throws InvalidTournamentException {
+        if (DataSink.tournamentMap.get(tournament) == null)
+            throw new InvalidTournamentException("Invalid tournament");
+        if (DataSink.fixtureMap.get(tournament) == null)
+            DataSink.fixtureMap.put(tournament, new ArrayList<>());
+        DataSink.fixtureMap.get(tournament).add(fixture);
     }
 }
