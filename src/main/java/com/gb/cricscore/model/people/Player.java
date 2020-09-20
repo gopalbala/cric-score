@@ -6,4 +6,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Player extends Person {
+    private PlayerResponsibility playerResponsibility;
+    private PlayerType playerType;
 }
