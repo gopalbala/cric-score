@@ -1,5 +1,11 @@
 package com.gb.cricscore.model.people;
 
-public class Player extends Person {
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
+public class Player extends Person {
+    private String team;
+    private String tournament;
 }

@@ -14,6 +14,7 @@ public class PlayerStats {
     @Getter
     @Setter
     private static class Stats {
+        private int matchesPlayed;
         private float oversBowled;
         private float runsScored;
         private int wicketsTaken;
