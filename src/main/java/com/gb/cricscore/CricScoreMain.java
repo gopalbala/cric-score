@@ -1,5 +1,8 @@
 package com.gb.cricscore;
 
+import com.gb.cricscore.model.match.Fixture;
+import com.gb.cricscore.model.match.PlayedTeams;
+import com.gb.cricscore.model.match.Stadium;
 import com.gb.cricscore.model.match.Tournament;
 import com.gb.cricscore.model.people.*;
 
@@ -34,6 +37,23 @@ public class CricScoreMain {
         tournament.getSponsors().add("HERO MOTORS");
         tournament.getSponsors().add("ANZ");
 
+        Fixture fixture1 = new Fixture();
+        fixture1.setTournament(tournament.getName());
+        fixture1.setBetween(new PlayedTeams(indianTeam, ausTeam));
+        fixture1.setToBePlayed(new Stadium("Bangalore Chinnaswamy stadium"));
+        fixture1.setMatchStartTime(LocalDateTime.now().plusDays(8));
+
+        Fixture fixture2 = new Fixture();
+        fixture2.setTournament(tournament.getName());
+        fixture2.setBetween(new PlayedTeams(indianTeam, ausTeam));
+        fixture2.setToBePlayed(new Stadium("MA Chidambaram stadium"));
+        fixture2.setMatchStartTime(LocalDateTime.now().plusDays(10));
+
+        Fixture fixture3 = new Fixture();
+        fixture3.setTournament(tournament.getName());
+        fixture3.setBetween(new PlayedTeams(indianTeam, ausTeam));
+        fixture3.setToBePlayed(new Stadium("Eden gardens"));
+        fixture3.setMatchStartTime(LocalDateTime.now().plusDays(15));
 
     }
 
