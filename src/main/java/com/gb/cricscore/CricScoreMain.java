@@ -1,5 +1,6 @@
 package com.gb.cricscore;
 
+import com.gb.cricscore.exception.InvalidTournamentException;
 import com.gb.cricscore.model.match.Fixture;
 import com.gb.cricscore.model.match.PlayedTeams;
 import com.gb.cricscore.model.match.Stadium;
@@ -54,6 +55,23 @@ public class CricScoreMain {
         fixture3.setBetween(new PlayedTeams(indianTeam, ausTeam));
         fixture3.setToBePlayed(new Stadium("Eden gardens"));
         fixture3.setMatchStartTime(LocalDateTime.now().plusDays(15));
+
+        Admin admin = new Admin("cric-admin");
+
+        admin.addStadium(new Stadium("Bangalore Chinnaswamy stadium"));
+        admin.addStadium(new Stadium("MA Chidambaram stadium"));
+        admin.addStadium(new Stadium("Eden gardens"));
+
+        admin.addTournament(tournament);
+
+        try {
+            admin.addFixture(fixture1);
+            admin.addFixture(fixture2);
+            admin.addFixture(fixture3);
+        } catch (InvalidTournamentException e) {
+            e.printStackTrace();
+        }
+
 
     }
 
