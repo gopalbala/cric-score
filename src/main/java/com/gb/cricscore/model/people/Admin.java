@@ -71,11 +71,11 @@ public class Admin extends Person {
         DataSink.stadiumMap.putIfAbsent(stadium.getName(), stadium);
     }
 
-    public void addFixture(Fixture fixture, String tournament) throws InvalidTournamentException {
-        if (DataSink.tournamentMap.get(tournament) == null)
+    public void addFixture(Fixture fixture) throws InvalidTournamentException {
+        if (DataSink.tournamentMap.get(fixture.getTournament()) == null)
             throw new InvalidTournamentException("Invalid tournament");
-        if (DataSink.fixtureMap.get(tournament) == null)
-            DataSink.fixtureMap.put(tournament, new ArrayList<>());
-        DataSink.fixtureMap.get(tournament).add(fixture);
+        if (DataSink.fixtureMap.get(fixture.getTournament()) == null)
+            DataSink.fixtureMap.put(fixture.getTournament(), new ArrayList<>());
+        DataSink.fixtureMap.get(fixture.getTournament()).add(fixture);
     }
 }
