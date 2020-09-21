@@ -12,4 +12,9 @@ public class PlayedTeams {
     Team team2;
     PlayingMembers t1PlayingMembers;
     PlayingMembers t2PlayingMembers;
+
+    public PlayedTeams(Team team1, Team team2) {
+        this.team1 = team1;
+        this.team2 = team2;
+    }
 }
