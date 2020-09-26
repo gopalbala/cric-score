@@ -13,4 +13,10 @@ public class Ball {
     private int runsScored;
     private Wicket wicket;
     private Commentary commentary;
+
+    public Ball(int overNumber, String bowledBy, String facedBy) {
+        this.overNumber = overNumber;
+        this.bowledBy = bowledBy;
+        this.facedBy = facedBy;
+    }
 }
