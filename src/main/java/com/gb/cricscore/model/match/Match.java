@@ -15,7 +15,7 @@ import java.util.List;
 public class Match {
     private String matchId;
     private Tournament tournament;
-    private final PlayedTeams playedTeams;
+    private final TeamsBetween teamsBetween;
     private String venue;
     private Toss toss;
     private LocalDateTime startTime;
@@ -28,8 +28,8 @@ public class Match {
     private List<Commentator> commentators;
     private List<Scorer> scorers;
 
-    public Match(PlayedTeams playedTeams) {
-        this.playedTeams = playedTeams;
+    public Match(TeamsBetween teamsBetween) {
+        this.teamsBetween = teamsBetween;
         umpires = new ArrayList<>();
         innings = new ArrayList<>();
         commentators = new ArrayList<>();

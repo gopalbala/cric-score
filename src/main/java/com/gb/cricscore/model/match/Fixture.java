@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @Setter
 public class Fixture {
     private String tournament;
-    private PlayedTeams between;
+    private TeamsBetween between;
     private Stadium toBePlayed;
     private LocalDateTime matchStartTime;
 }
