@@ -1,10 +1,8 @@
 package com.gb.cricscore;
 
+import com.gb.cricscore.exception.InvalidMatch;
 import com.gb.cricscore.exception.InvalidTournamentException;
-import com.gb.cricscore.model.match.Fixture;
-import com.gb.cricscore.model.match.PlayedTeams;
-import com.gb.cricscore.model.match.Stadium;
-import com.gb.cricscore.model.match.Tournament;
+import com.gb.cricscore.model.match.*;
 import com.gb.cricscore.model.people.*;
 
 import java.time.LocalDateTime;
@@ -12,9 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CricScoreMain {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InvalidMatch, InvalidTournamentException {
         Tournament tournament = new Tournament("Gavaskar - Border Series",
                 LocalDateTime.now().plusDays(7), LocalDateTime.now().plusDays(21));
+
         Team indianTeam = new Team("TEAM INDIA", "Gavaskar - Border Series");
         indianTeam.getPlayers().addAll(getIndianSquad());
 
@@ -40,19 +39,19 @@ public class CricScoreMain {
 
         Fixture fixture1 = new Fixture();
         fixture1.setTournament(tournament.getName());
-        fixture1.setBetween(new PlayedTeams(indianTeam, ausTeam));
+        fixture1.setBetween(new TeamsBetween(indianTeam, ausTeam));
         fixture1.setToBePlayed(new Stadium("Bangalore Chinnaswamy stadium"));
         fixture1.setMatchStartTime(LocalDateTime.now().plusDays(8));
 
         Fixture fixture2 = new Fixture();
         fixture2.setTournament(tournament.getName());
-        fixture2.setBetween(new PlayedTeams(indianTeam, ausTeam));
+        fixture2.setBetween(new TeamsBetween(indianTeam, ausTeam));
         fixture2.setToBePlayed(new Stadium("MA Chidambaram stadium"));
         fixture2.setMatchStartTime(LocalDateTime.now().plusDays(10));
 
         Fixture fixture3 = new Fixture();
         fixture3.setTournament(tournament.getName());
-        fixture3.setBetween(new PlayedTeams(indianTeam, ausTeam));
+        fixture3.setBetween(new TeamsBetween(indianTeam, ausTeam));
         fixture3.setToBePlayed(new Stadium("Eden gardens"));
         fixture3.setMatchStartTime(LocalDateTime.now().plusDays(15));
 
@@ -72,6 +71,15 @@ public class CricScoreMain {
             e.printStackTrace();
         }
 
+        Match match = new Match(new TeamsBetween(indianTeam, ausTeam));
+        match.setMatchId("BGINDVSAUSM1");
+        match.setTournament(tournament);
+        match.setVenue("Bangalore Chinnaswamy stadium");
+
+        admin.addMatch(match);
+
+        Umpire umpire = new Umpire("Venkatragavan");
+        admin.addUmpire(umpire, match.getMatchId());
 
     }
 
