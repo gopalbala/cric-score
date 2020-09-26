@@ -9,8 +9,13 @@ import java.util.List;
 @Setter
 
 public class Over {
+    private int number;
     private List<Ball> balls;
     private List<Run> runs;
+
+    public Over(int number) {
+        this.number = number;
+    }
 
     private boolean isMaidenOver() {
         for (Ball ball : balls) {
