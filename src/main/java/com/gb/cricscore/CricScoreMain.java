@@ -138,6 +138,9 @@ public class CricScoreMain {
                 "well bowled, length ball, swings outside");
         ball1.setCommentary(commentary);
 
+        over1.getBalls().add(ball1);
+        scorer1.setScore(ball1);
+
         Ball ball2 = new Ball(1, "BHUVENESHWAR", "Aaron Finch");
         ball2.setRunsScored(0);
         ball2.setBallType(BallType.NORMAL);
@@ -146,6 +149,8 @@ public class CricScoreMain {
                 "well bowled, length ball, swings inside");
         ball2.setCommentary(commentary);
 
+        over1.getBalls().add(ball2);
+        scorer1.setScore(ball2);
         Ball ball3 = new Ball(1, "BHUVENESHWAR", "Aaron Finch");
         ball3.setRunsScored(1);
         ball3.setBallType(BallType.NORMAL);
@@ -153,7 +158,8 @@ public class CricScoreMain {
         commentary = new Commentary("Ian botham",
                 "well bowled, lenght ball, swings outside, edged to thirdman");
         ball3.setCommentary(commentary);
-
+        over1.getBalls().add(ball3);
+        scorer1.setScore(ball3);
         Ball ball4 = new Ball(1, "BHUVENESHWAR", "David Warner");
         ball4.setRunsScored(1);
         ball4.setBallType(BallType.NORMAL);
@@ -161,7 +167,8 @@ public class CricScoreMain {
         commentary = new Commentary("Ian botham",
                 "well bowled, lenght ball, swings outside, edged to thirdman");
         ball4.setCommentary(commentary);
-
+        over1.getBalls().add(ball4);
+        scorer1.setScore(ball4);
         Ball ball5 = new Ball(1, "BHUVENESHWAR", "Aaron Finch");
         ball5.setRunsScored(1);
         ball5.setBallType(BallType.NORMAL);
@@ -169,7 +176,8 @@ public class CricScoreMain {
         commentary = new Commentary("Ian botham",
                 "well bowled, lenght ball, swings outside");
         ball5.setCommentary(commentary);
-
+        over1.getBalls().add(ball5);
+        scorer1.setScore(ball5);
         Ball ball6 = new Ball(1, "BHUVENESHWAR", "David Warner");
         ball6.setRunsScored(0);
 
@@ -183,6 +191,11 @@ public class CricScoreMain {
         commentary = new Commentary("Ian botham",
                 "well bowled, lenght ball, swings outside");
         ball6.setCommentary(commentary);
+        over1.getBalls().add(ball6);
+        scorer1.setScore(ball6);
+        innings1.getOvers().add(over1);
+
+
     }
 
     private static List<Player> getIndianSquad() {
