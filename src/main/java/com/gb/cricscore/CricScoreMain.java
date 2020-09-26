@@ -1,16 +1,18 @@
 package com.gb.cricscore;
 
 import com.gb.cricscore.exception.InvalidMatch;
+import com.gb.cricscore.exception.InvalidTeamException;
 import com.gb.cricscore.exception.InvalidTournamentException;
 import com.gb.cricscore.model.match.*;
 import com.gb.cricscore.model.people.*;
+import com.gb.cricscore.repository.DataSink;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CricScoreMain {
-    public static void main(String[] args) throws InvalidMatch, InvalidTournamentException {
+    public static void main(String[] args) throws InvalidMatch, InvalidTournamentException, InvalidTeamException {
         Tournament tournament = new Tournament("Gavaskar - Border Series",
                 LocalDateTime.now().plusDays(7), LocalDateTime.now().plusDays(21));
 
@@ -63,6 +65,16 @@ public class CricScoreMain {
 
         admin.addTournament(tournament);
 
+        admin.addTeam(indianTeam);
+        admin.addTeam(ausTeam);
+
+        for (Player player : indianTeam.getPlayers()) {
+            admin.addPlayer(player, indianTeam.getName(), tournament.getName());
+        }
+
+        for (Player player : ausTeam.getPlayers()) {
+            admin.addPlayer(player, ausTeam.getName(), tournament.getName());
+        }
         try {
             admin.addFixture(fixture1);
             admin.addFixture(fixture2);
@@ -115,6 +127,62 @@ public class CricScoreMain {
         List<Scorer> scorers = List.of(scorer1, scorer2);
         match.setScorers(scorers);
 
+        Innings innings1 = new Innings();
+        Over over1 = new Over(1);
+
+        Ball ball1 = new Ball(1, "BHUVENESHWAR", "Aaron Finch");
+        ball1.setRunsScored(0);
+        ball1.setBallType(BallType.NORMAL);
+
+        Commentary commentary = new Commentary("Ian botham",
+                "well bowled, length ball, swings outside");
+        ball1.setCommentary(commentary);
+
+        Ball ball2 = new Ball(1, "BHUVENESHWAR", "Aaron Finch");
+        ball2.setRunsScored(0);
+        ball2.setBallType(BallType.NORMAL);
+
+        commentary = new Commentary("Ian botham",
+                "well bowled, length ball, swings inside");
+        ball2.setCommentary(commentary);
+
+        Ball ball3 = new Ball(1, "BHUVENESHWAR", "Aaron Finch");
+        ball3.setRunsScored(1);
+        ball3.setBallType(BallType.NORMAL);
+
+        commentary = new Commentary("Ian botham",
+                "well bowled, lenght ball, swings outside, edged to thirdman");
+        ball3.setCommentary(commentary);
+
+        Ball ball4 = new Ball(1, "BHUVENESHWAR", "David Warner");
+        ball4.setRunsScored(1);
+        ball4.setBallType(BallType.NORMAL);
+
+        commentary = new Commentary("Ian botham",
+                "well bowled, lenght ball, swings outside, edged to thirdman");
+        ball4.setCommentary(commentary);
+
+        Ball ball5 = new Ball(1, "BHUVENESHWAR", "Aaron Finch");
+        ball5.setRunsScored(1);
+        ball5.setBallType(BallType.NORMAL);
+
+        commentary = new Commentary("Ian botham",
+                "well bowled, lenght ball, swings outside");
+        ball5.setCommentary(commentary);
+
+        Ball ball6 = new Ball(1, "BHUVENESHWAR", "David Warner");
+        ball6.setRunsScored(0);
+
+        ball6.setWicket(new Wicket(WicketType.BOWLED,
+                DataSink.playerMap.get("BHUVENESHWAR"),
+                DataSink.playerMap.get("David Warner"),
+                null, null, null));
+
+        ball6.setBallType(BallType.NORMAL);
+
+        commentary = new Commentary("Ian botham",
+                "well bowled, lenght ball, swings outside");
+        ball6.setCommentary(commentary);
     }
 
     private static List<Player> getIndianSquad() {

@@ -42,8 +42,7 @@ public class Admin extends Person {
             throw new InvalidTournamentException("Invalid tournament");
         if (DataSink.teamMap.get(team) == null)
             throw new InvalidTeamException("Invalid team");
-        DataSink.teamMap.get(team)
-                .getPlayers().add(player);
+        DataSink.playerMap.putIfAbsent(player.getName(), player);
 
     }
 
