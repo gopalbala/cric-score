@@ -78,8 +78,42 @@ public class CricScoreMain {
 
         admin.addMatch(match);
 
+        List<Umpire> umpires = new ArrayList<>();
+
         Umpire umpire = new Umpire("Venkatragavan");
         admin.addUmpire(umpire, match.getMatchId());
+        umpires.add(umpire);
+
+        Umpire umpire1 = new Umpire("Nitin Menon");
+        admin.addUmpire(umpire1, match.getMatchId());
+        umpires.add(umpire1);
+
+        Umpire umpire2 = new Umpire("Aleem Dar");
+        admin.addUmpire(umpire2, match.getMatchId());
+        umpires.add(umpire2);
+
+        Umpire umpire3 = new Umpire("Kumar Dharmasena");
+        admin.addUmpire(umpire3, match.getMatchId());
+        umpires.add(umpire3);
+
+        match.setUmpires(umpires);
+
+        Referee referee = new Referee("Javagal Srinath");
+        match.setReferees(List.of(referee));
+
+        Toss toss = new Toss();
+        toss.setTossedBy("Aaron Finch");
+        toss.setAskedBy("MS Dhoni");
+
+        toss.setWonByTeam(indianTeam.getName());
+        toss.setTossAction(TossAction.BOWLING);
+        match.setToss(toss);
+
+        Scorer scorer1 = new Scorer("Scorer 1");
+        Scorer scorer2 = new Scorer("Scorer 2");
+
+        List<Scorer> scorers = List.of(scorer1, scorer2);
+        match.setScorers(scorers);
 
     }
 

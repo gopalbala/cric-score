@@ -1,6 +1,7 @@
 package com.gb.cricscore.model.match;
 
 import com.gb.cricscore.model.people.Commentator;
+import com.gb.cricscore.model.people.Referee;
 import com.gb.cricscore.model.people.Scorer;
 import com.gb.cricscore.model.people.Umpire;
 import lombok.Getter;
@@ -27,6 +28,7 @@ public class Match {
     private List<Innings> innings;
     private List<Commentator> commentators;
     private List<Scorer> scorers;
+    private List<Referee> referees;
 
     public Match(TeamsBetween teamsBetween) {
         this.teamsBetween = teamsBetween;
@@ -34,5 +36,6 @@ public class Match {
         innings = new ArrayList<>();
         commentators = new ArrayList<>();
         scorers = new ArrayList<>();
+        referees = new ArrayList<>();
     }
 }
