@@ -21,10 +21,10 @@ public class Admin extends Person {
     }
 
     public void addMatch(Match match) throws InvalidTournamentException {
-        if (DataSink.tournamentMap.get(match.getTournament()) == null) {
+        if (DataSink.tournamentMap.get(match.getTournament().getName()) == null) {
             throw new InvalidTournamentException("Invalid tournament");
         }
-        DataSink.tournamentMap.get(match.getTournament())
+        DataSink.tournamentMap.get(match.getTournament().getName())
                 .getMatches().add(match);
         DataSink.matchMap.putIfAbsent(match.getMatchId(), match);
     }
