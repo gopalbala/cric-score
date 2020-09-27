@@ -1,9 +1,6 @@
 package com.gb.cricscore.repository;
 
-import com.gb.cricscore.model.match.Fixture;
-import com.gb.cricscore.model.match.Match;
-import com.gb.cricscore.model.match.Stadium;
-import com.gb.cricscore.model.match.Tournament;
+import com.gb.cricscore.model.match.*;
 import com.gb.cricscore.model.people.Commentator;
 import com.gb.cricscore.model.people.Player;
 import com.gb.cricscore.model.people.Scorer;
@@ -22,4 +19,5 @@ public class DataSink {
     public static Map<String, Scorer> scorerMap = new HashMap<>();
     public static Map<String, Stadium> stadiumMap = new HashMap<>();
     public static Map<String, List<Fixture>> fixtureMap = new HashMap<>();
+    public static Map<String, Map<Integer, ScoreCard>> scoreCardMap = new HashMap<>();
 }
