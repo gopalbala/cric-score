@@ -46,16 +46,14 @@ public class ScoreCard {
         return DataSink.scoreCardMap.get(matchName).get(inningsNumber);
     }
 
-    public void addOver(Over over) {
-        Match match = DataSink.matchMap.get(this.match);
-        Innings innings = match.getInnings().get(this.innings);
-        innings.getOvers().putIfAbsent(over.getNumber(), over);
-    }
+
 
     public void setScoreCardForBall(Ball ball) {
         Match match = DataSink.matchMap.get(this.match);
         Innings innings = match.getInnings().get(this.innings);
-        Over over = innings.getOvers().get(ball.getOverNumber());
+        addOver(ball.getOverNumber());
+        innings.getOvers().get(ball.getOverNumber());
+        Over over;
         switch (ball.getBallType()) {
             case WIDE:
                 updateExtras(ball);
@@ -85,6 +83,12 @@ public class ScoreCard {
             }
         }
 
+    }
+
+    private void addOver(int overNumber) {
+        Match match = DataSink.matchMap.get(this.match);
+        Innings innings = match.getInnings().get(this.innings);
+        innings.getOvers().putIfAbsent(overNumber, new Over(overNumber));
     }
 
     private PlayerScore getOrCreatePlayerScore(Ball ball) {
