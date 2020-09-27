@@ -9,7 +9,9 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Getter
 @Setter
@@ -25,7 +27,7 @@ public class Match {
     private String winner;
     private String lost;
     private MatchResult matchResult;
-    private List<Innings> innings;
+    private Map<Integer, Innings> innings;
     private List<Commentator> commentators;
     private List<Scorer> scorers;
     private List<Referee> referees;
@@ -33,7 +35,7 @@ public class Match {
     public Match(TeamsBetween teamsBetween) {
         this.teamsBetween = teamsBetween;
         umpires = new ArrayList<>();
-        innings = new ArrayList<>();
+        innings = new HashMap<>();
         commentators = new ArrayList<>();
         scorers = new ArrayList<>();
         referees = new ArrayList<>();
