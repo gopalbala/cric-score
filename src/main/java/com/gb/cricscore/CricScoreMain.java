@@ -127,11 +127,11 @@ public class CricScoreMain {
         List<Scorer> scorers = List.of(scorer1, scorer2);
         match.setScorers(scorers);
 
-        Innings innings1 = new Innings();
+        Innings innings1 = new Innings(1);
         Over over1 = new Over(1);
 
         Ball ball1 = new Ball(1, "BHUVENESHWAR", "Aaron Finch");
-        ball1.setRunsScored(0);
+        ball1.setRunType(RunType.ZERO);
         ball1.setBallType(BallType.NORMAL);
 
         Commentary commentary = new Commentary("Ian botham",
@@ -139,10 +139,10 @@ public class CricScoreMain {
         ball1.setCommentary(commentary);
 
         over1.getBalls().add(ball1);
-        scorer1.setScore(ball1);
+        scorer1.setScore(ball1, match.getMatchId(), innings1.getInningsNumber());
 
         Ball ball2 = new Ball(1, "BHUVENESHWAR", "Aaron Finch");
-        ball2.setRunsScored(0);
+        ball2.setRunType(RunType.ZERO);
         ball2.setBallType(BallType.NORMAL);
 
         commentary = new Commentary("Ian botham",
@@ -150,36 +150,36 @@ public class CricScoreMain {
         ball2.setCommentary(commentary);
 
         over1.getBalls().add(ball2);
-        scorer1.setScore(ball2);
+        scorer1.setScore(ball2, match.getMatchId(), innings1.getInningsNumber());
         Ball ball3 = new Ball(1, "BHUVENESHWAR", "Aaron Finch");
-        ball3.setRunsScored(1);
+        ball3.setRunType(RunType.ONE);
         ball3.setBallType(BallType.NORMAL);
 
         commentary = new Commentary("Ian botham",
                 "well bowled, lenght ball, swings outside, edged to thirdman");
         ball3.setCommentary(commentary);
         over1.getBalls().add(ball3);
-        scorer1.setScore(ball3);
+        scorer1.setScore(ball3, match.getMatchId(), innings1.getInningsNumber());
         Ball ball4 = new Ball(1, "BHUVENESHWAR", "David Warner");
-        ball4.setRunsScored(1);
+        ball4.setRunType(RunType.ONE);
         ball4.setBallType(BallType.NORMAL);
 
         commentary = new Commentary("Ian botham",
                 "well bowled, lenght ball, swings outside, edged to thirdman");
         ball4.setCommentary(commentary);
         over1.getBalls().add(ball4);
-        scorer1.setScore(ball4);
+        scorer1.setScore(ball4, match.getMatchId(), innings1.getInningsNumber());
         Ball ball5 = new Ball(1, "BHUVENESHWAR", "Aaron Finch");
-        ball5.setRunsScored(1);
+        ball5.setRunType(RunType.ONE);
         ball5.setBallType(BallType.NORMAL);
 
         commentary = new Commentary("Ian botham",
                 "well bowled, lenght ball, swings outside");
         ball5.setCommentary(commentary);
         over1.getBalls().add(ball5);
-        scorer1.setScore(ball5);
+        scorer1.setScore(ball5, match.getMatchId(), innings1.getInningsNumber());
         Ball ball6 = new Ball(1, "BHUVENESHWAR", "David Warner");
-        ball6.setRunsScored(0);
+        ball6.setRunType(RunType.ZERO);
 
         ball6.setWicket(new Wicket(WicketType.BOWLED,
                 DataSink.playerMap.get("BHUVENESHWAR"),
@@ -192,8 +192,8 @@ public class CricScoreMain {
                 "well bowled, lenght ball, swings outside");
         ball6.setCommentary(commentary);
         over1.getBalls().add(ball6);
-        scorer1.setScore(ball6);
-        innings1.getOvers().add(over1);
+        scorer1.setScore(ball6, match.getMatchId(), innings1.getInningsNumber());
+        innings1.getOvers().putIfAbsent(over1.getNumber(), over1);
 
 
     }
