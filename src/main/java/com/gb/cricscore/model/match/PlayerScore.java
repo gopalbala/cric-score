@@ -14,6 +14,8 @@ public class PlayerScore {
     private WicketType wicketType;
     private String bowler;
     private boolean isOut;
+    private int totalBoundaries;
+    private int totalSixes;
 
     public PlayerScore(String name) {
         this.name = name;
