@@ -3,15 +3,15 @@ package com.gb.cricscore.model.match;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 @Getter
 @Setter
 public class Innings {
-    List<Over> overs;
+    Map<Integer, Over> overs;
 
     public Innings() {
-        overs = new ArrayList<>();
+        overs = new HashMap<>();
     }
 }
