@@ -13,6 +13,7 @@ public class PlayerScore {
     private List<Integer> runsScored;
     private WicketType wicketType;
     private String bowler;
+    private boolean isOut;
 
     public PlayerScore(String name) {
         this.name = name;
