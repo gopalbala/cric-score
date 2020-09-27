@@ -3,6 +3,7 @@ package com.gb.cricscore.model.match;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -10,16 +11,22 @@ import java.util.List;
 
 public class Over {
     private int number;
+    private int runsScored = 0;
+    private int extras = 0;
+    private int totalRunsInOver = 0;
+
     private List<Ball> balls;
     private List<Run> runs;
 
     public Over(int number) {
         this.number = number;
+        balls = new ArrayList<>();
+        runs = new ArrayList<>();
     }
 
     private boolean isMaidenOver() {
         for (Ball ball : balls) {
-            if (ball.getRunsScored() > 0) {
+            if (ball.getRunType() != RunType.ZERO) {
                 return false;
             }
         }
@@ -34,14 +41,6 @@ public class Over {
             }
         }
         return wkCount;
-    }
-
-    private int getRunsScoredInOver() {
-        int runsScored = 0;
-        for (Ball ball : balls) {
-            runsScored += ball.getRunsScored();
-        }
-        return runsScored;
     }
 
 }
