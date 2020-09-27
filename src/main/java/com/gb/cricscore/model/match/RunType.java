@@ -1,6 +1,7 @@
 package com.gb.cricscore.model.match;
 
 public enum RunType {
+    ZERO,
     ONE,
     TWO,
     THREE,
