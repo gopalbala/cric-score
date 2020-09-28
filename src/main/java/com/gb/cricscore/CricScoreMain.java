@@ -187,8 +187,8 @@ public class CricScoreMain {
         ball6.setRunType(RunType.ZERO);
 
         ball6.setWicket(new Wicket(WicketType.BOWLED,
-                DataSink.playerMap.get("BHUVENESHWAR"),
                 DataSink.playerMap.get("David Warner"),
+                DataSink.playerMap.get("BHUVENESHWAR"),
                 null, null, null));
 
         ball6.setBallType(BallType.WICKET);
@@ -229,8 +229,6 @@ public class CricScoreMain {
 
         over1.getBalls().add(ball1);
         scorer1.setScore(ball1, match.getMatchId(), innings.getInningsNumber());
-
-
     }
 
     private static List<Player> getIndianSquad() {
