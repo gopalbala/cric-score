@@ -1,13 +1,11 @@
 package com.gb.cricscore.model.match;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter
-@Setter
+@Data
 public class PlayerScore {
     private String name;
     private List<Integer> runsScored;
