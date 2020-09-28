@@ -113,6 +113,9 @@ public class CricScoreMain {
         Referee referee = new Referee("Javagal Srinath");
         match.setReferees(List.of(referee));
 
+        admin.addCommentator(new Commentator("Ian Botham"), match.getMatchId());
+        admin.addCommentator(new Commentator("Sunil Gavaskar"), match.getMatchId());
+
         Toss toss = new Toss();
         toss.setTossedBy("Aaron Finch");
         toss.setAskedBy("MS Dhoni");
@@ -123,6 +126,9 @@ public class CricScoreMain {
 
         Scorer scorer1 = new Scorer("Scorer 1");
         Scorer scorer2 = new Scorer("Scorer 2");
+
+        admin.addScorer(scorer1, match.getMatchId());
+        admin.addScorer(scorer2, match.getMatchId());
 
         List<Scorer> scorers = List.of(scorer1, scorer2);
         match.setScorers(scorers);
