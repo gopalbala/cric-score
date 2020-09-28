@@ -129,7 +129,9 @@ public class CricScoreMain {
 
         Innings innings1 = new Innings(1);
         setOver1(match, innings1, scorer1);
-
+        System.out.println(ScoreCard.INSTANCE(match.getMatchId(), innings1.getInningsNumber()));
+        setOver2(match, innings1, scorer1);
+        System.out.println(ScoreCard.INSTANCE(match.getMatchId(), innings1.getInningsNumber()));
     }
 
     private static void setOver1(Match match, Innings innings, Scorer scorer1) throws InvalidMatch {
@@ -190,9 +192,7 @@ public class CricScoreMain {
                 DataSink.playerMap.get("David Warner"),
                 DataSink.playerMap.get("BHUVENESHWAR"),
                 null, null, null));
-
         ball6.setBallType(BallType.WICKET);
-
         commentary = new Commentary("Ian botham",
                 "well bowled, lenght ball, swings outside");
         ball6.setCommentary(commentary);
@@ -200,33 +200,90 @@ public class CricScoreMain {
         scorer1.setScore(ball6, match.getMatchId(), innings.getInningsNumber());
         innings.getOvers().putIfAbsent(over1.getNumber(), over1);
 
-        setOver2(match, innings, scorer1);
-
-        System.out.println(ScoreCard.INSTANCE(match.getMatchId(), innings.getInningsNumber()));
     }
 
     private static void setOver2(Match match, Innings innings, Scorer scorer1) throws InvalidMatch {
-        Over over1 = new Over(1);
+        Over over1 = new Over(2);
 
         Ball ball1 = new Ball(2, "BUMRAH", "Aaron Finch");
         ball1.setRunType(RunType.ONE_WIDE);
         ball1.setBallType(BallType.WIDE);
-
         Commentary commentary = new Commentary("Ian botham",
                 "well bowled, length ball, swings outside, wide");
         ball1.setCommentary(commentary);
-
         over1.getBalls().add(ball1);
         scorer1.setScore(ball1, match.getMatchId(), innings.getInningsNumber());
 
         ball1 = new Ball(1, "BUMRAH", "Aaron Finch");
         ball1.setRunType(RunType.FIVE_WIDES);
         ball1.setBallType(BallType.WIDE);
-
         commentary = new Commentary("Ian botham",
-                "well bowled, length ball, swings outside, wide");
+                "swings outside, wide");
         ball1.setCommentary(commentary);
+        over1.getBalls().add(ball1);
+        scorer1.setScore(ball1, match.getMatchId(), innings.getInningsNumber());
 
+        //1
+        ball1 = new Ball(2, "BUMRAH", "Aaron Finch");
+        ball1.setRunType(RunType.ONE);
+        ball1.setBallType(BallType.NORMAL);
+        commentary = new Commentary("Ian botham",
+                "well bowled, length ball, one run taken");
+        ball1.setCommentary(commentary);
+        over1.getBalls().add(ball1);
+        scorer1.setScore(ball1, match.getMatchId(), innings.getInningsNumber());
+
+        //2
+        ball1 = new Ball(2, "BUMRAH", "Usman Khawaja");
+        ball1.setRunType(RunType.FOUR);
+        ball1.setBallType(BallType.NORMAL);
+        commentary = new Commentary("Ian botham",
+                "well bowled, length ball, Boudary");
+        ball1.setCommentary(commentary);
+        over1.getBalls().add(ball1);
+        scorer1.setScore(ball1, match.getMatchId(), innings.getInningsNumber());
+
+        //3
+        ball1 = new Ball(2, "BUMRAH", "Usman Khawaja");
+        ball1.setRunType(RunType.SIX);
+        ball1.setBallType(BallType.NORMAL);
+        commentary = new Commentary("Ian botham",
+                "well bowled, length ball, Six");
+        ball1.setCommentary(commentary);
+        over1.getBalls().add(ball1);
+        scorer1.setScore(ball1, match.getMatchId(), innings.getInningsNumber());
+
+        //4
+        ball1 = new Ball(2, "BUMRAH", "Usman Khawaja");
+        ball1.setRunType(RunType.ONE);
+        ball1.setBallType(BallType.NORMAL);
+        commentary = new Commentary("Ian botham",
+                "well bowled, length ball, One");
+        ball1.setCommentary(commentary);
+        over1.getBalls().add(ball1);
+        scorer1.setScore(ball1, match.getMatchId(), innings.getInningsNumber());
+
+        //5
+        ball1 = new Ball(2, "BUMRAH", "Aaron Finch");
+        ball1.setRunType(RunType.FOUR);
+        ball1.setBallType(BallType.NORMAL);
+        commentary = new Commentary("Ian botham",
+                "length ball, Boundary");
+        ball1.setCommentary(commentary);
+        over1.getBalls().add(ball1);
+        scorer1.setScore(ball1, match.getMatchId(), innings.getInningsNumber());
+
+        //6
+        ball1 = new Ball(2, "BUMRAH", "Usman Khawaja");
+        ball1.setBallType(BallType.WICKET);
+        ball1.setRunType(RunType.ZERO);
+        ball1.setWicket(new Wicket(WicketType.CAUGHT,
+                DataSink.playerMap.get("Usman Khawaja"),
+                DataSink.playerMap.get("BUMRAH"),
+                DataSink.playerMap.get("MS Dhoni"), null, null));
+        commentary = new Commentary("Ian botham",
+                "length ball, Boundary");
+        ball1.setCommentary(commentary);
         over1.getBalls().add(ball1);
         scorer1.setScore(ball1, match.getMatchId(), innings.getInningsNumber());
     }
