@@ -1,4 +1,4 @@
-# Cricket and Sore card Application
+# Backend foe tracking Cricket matches and Sore card Application
 
 Come-up with design for cricket website  
 1. It can track tournaments
