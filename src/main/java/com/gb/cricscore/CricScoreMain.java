@@ -128,6 +128,11 @@ public class CricScoreMain {
         match.setScorers(scorers);
 
         Innings innings1 = new Innings(1);
+        setOver1(match, innings1, scorer1);
+
+    }
+
+    private static void setOver1(Match match, Innings innings, Scorer scorer1) throws InvalidMatch {
         Over over1 = new Over(1);
 
         Ball ball1 = new Ball(1, "BHUVENESHWAR", "Aaron Finch");
@@ -139,7 +144,7 @@ public class CricScoreMain {
         ball1.setCommentary(commentary);
 
         over1.getBalls().add(ball1);
-        scorer1.setScore(ball1, match.getMatchId(), innings1.getInningsNumber());
+        scorer1.setScore(ball1, match.getMatchId(), innings.getInningsNumber());
 
         Ball ball2 = new Ball(1, "BHUVENESHWAR", "Aaron Finch");
         ball2.setRunType(RunType.ZERO);
@@ -150,7 +155,7 @@ public class CricScoreMain {
         ball2.setCommentary(commentary);
 
         over1.getBalls().add(ball2);
-        scorer1.setScore(ball2, match.getMatchId(), innings1.getInningsNumber());
+        scorer1.setScore(ball2, match.getMatchId(), innings.getInningsNumber());
         Ball ball3 = new Ball(1, "BHUVENESHWAR", "Aaron Finch");
         ball3.setRunType(RunType.ONE);
         ball3.setBallType(BallType.NORMAL);
@@ -159,7 +164,7 @@ public class CricScoreMain {
                 "well bowled, lenght ball, swings outside, edged to thirdman");
         ball3.setCommentary(commentary);
         over1.getBalls().add(ball3);
-        scorer1.setScore(ball3, match.getMatchId(), innings1.getInningsNumber());
+        scorer1.setScore(ball3, match.getMatchId(), innings.getInningsNumber());
         Ball ball4 = new Ball(1, "BHUVENESHWAR", "David Warner");
         ball4.setRunType(RunType.ONE);
         ball4.setBallType(BallType.NORMAL);
@@ -168,7 +173,7 @@ public class CricScoreMain {
                 "well bowled, lenght ball, swings outside, edged to thirdman");
         ball4.setCommentary(commentary);
         over1.getBalls().add(ball4);
-        scorer1.setScore(ball4, match.getMatchId(), innings1.getInningsNumber());
+        scorer1.setScore(ball4, match.getMatchId(), innings.getInningsNumber());
         Ball ball5 = new Ball(1, "BHUVENESHWAR", "Aaron Finch");
         ball5.setRunType(RunType.ONE);
         ball5.setBallType(BallType.NORMAL);
@@ -177,7 +182,7 @@ public class CricScoreMain {
                 "well bowled, lenght ball, swings outside");
         ball5.setCommentary(commentary);
         over1.getBalls().add(ball5);
-        scorer1.setScore(ball5, match.getMatchId(), innings1.getInningsNumber());
+        scorer1.setScore(ball5, match.getMatchId(), innings.getInningsNumber());
         Ball ball6 = new Ball(1, "BHUVENESHWAR", "David Warner");
         ball6.setRunType(RunType.ZERO);
 
@@ -192,8 +197,25 @@ public class CricScoreMain {
                 "well bowled, lenght ball, swings outside");
         ball6.setCommentary(commentary);
         over1.getBalls().add(ball6);
-        scorer1.setScore(ball6, match.getMatchId(), innings1.getInningsNumber());
-        innings1.getOvers().putIfAbsent(over1.getNumber(), over1);
+        scorer1.setScore(ball6, match.getMatchId(), innings.getInningsNumber());
+        innings.getOvers().putIfAbsent(over1.getNumber(), over1);
+
+        setOver2(match, innings, scorer1);
+    }
+
+    private static void setOver2(Match match, Innings innings, Scorer scorer1) throws InvalidMatch {
+        Over over1 = new Over(1);
+
+        Ball ball1 = new Ball(1, "BUMRAH", "Aaron Finch");
+        ball1.setRunType(RunType.ONE_WIDE);
+        ball1.setBallType(BallType.WIDE);
+
+        Commentary commentary = new Commentary("Ian botham",
+                "well bowled, length ball, swings outside, wide");
+        ball1.setCommentary(commentary);
+
+        over1.getBalls().add(ball1);
+        scorer1.setScore(ball1, match.getMatchId(), innings.getInningsNumber());
 
 
     }
