@@ -9,9 +9,11 @@ import java.util.Map;
 @Getter
 @Setter
 public class Innings {
-    Map<Integer, Over> overs;
+    private int inningsNumber;
+    private Map<Integer, Over> overs;
 
-    public Innings() {
+    public Innings(int inningsNumber) {
+        this.inningsNumber = inningsNumber;
         overs = new HashMap<>();
     }
 }
