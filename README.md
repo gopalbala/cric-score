@@ -16,10 +16,18 @@ Come-up with design for cricket website
 13. Team may contain more than one coach
 13. Team may contain a doctor, physio and a manager
 14. Team has a captain and vice captain
-15. Team is composed of players and players are of the following types
-    A. BATSMAN
-    B. BOWLER
+15. Team is composed of players and players are of the following types  
+    A. BATSMAN  
+    B. BOWLER  
     C. WICKETKEEPER
 16. A match contian minimum of two innings
 17. Match starts with a toss. Coin is tossed by one captain and asked by another
 18. Toss has an outcome on which a team may choose to bowl / bat 
+19. Match will involve the following people  
+    A. Teams  
+    B. Umpires  
+    C. Referee  
+    D. Scorers  
+    E. Commentators    
+20. Bowler bowls overs and Batsman scores runs
+21. Bowled balls and runs should be tracked on scorecard

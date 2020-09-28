@@ -20,7 +20,7 @@ build/
 *.iml
 *.ipr
 out/
-
+gradle/wrapper/gradle-wrapper.jar
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/

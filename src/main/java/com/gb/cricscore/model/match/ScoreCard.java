@@ -13,6 +13,7 @@ public class ScoreCard {
     private Map<String, BowlerOver> bowlerOvers = new HashMap<>();
     private int totalExtras;
     private int totalScore;
+    private int totalWickets;
     private int totalByes;
     private int totalLegByes;
     private String match;
@@ -45,7 +46,6 @@ public class ScoreCard {
     }
 
 
-
     public void setScoreCardForBall(Ball ball) {
         Match match = DataSink.matchMap.get(this.match);
         Innings innings = match.getInnings().get(this.innings);
@@ -68,6 +68,7 @@ public class ScoreCard {
                 PlayerScore playerScore = getOrCreatePlayerScore(ball);
                 updateScore(ball);
                 playerScore.setOut(true);
+                totalWickets += 1;
                 playerScore.setWicketType(ball.getWicket().getWicketType());
                 playerScore.setBowler(ball.getBowledBy());
                 BowlerOver bowlerOver = setBowlerOverForBall(ball);
