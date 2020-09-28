@@ -1,4 +1,4 @@
-# cric-score
+# Cricket application
 
 Come-up with design for cricket website  
 1. It can track tournaments
