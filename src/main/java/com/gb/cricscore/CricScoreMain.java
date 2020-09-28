@@ -191,7 +191,7 @@ public class CricScoreMain {
                 DataSink.playerMap.get("David Warner"),
                 null, null, null));
 
-        ball6.setBallType(BallType.NORMAL);
+        ball6.setBallType(BallType.WICKET);
 
         commentary = new Commentary("Ian botham",
                 "well bowled, lenght ball, swings outside");
@@ -201,16 +201,29 @@ public class CricScoreMain {
         innings.getOvers().putIfAbsent(over1.getNumber(), over1);
 
         setOver2(match, innings, scorer1);
+
+        System.out.println(ScoreCard.INSTANCE(match.getMatchId(), innings.getInningsNumber()));
     }
 
     private static void setOver2(Match match, Innings innings, Scorer scorer1) throws InvalidMatch {
         Over over1 = new Over(1);
 
-        Ball ball1 = new Ball(1, "BUMRAH", "Aaron Finch");
+        Ball ball1 = new Ball(2, "BUMRAH", "Aaron Finch");
         ball1.setRunType(RunType.ONE_WIDE);
         ball1.setBallType(BallType.WIDE);
 
         Commentary commentary = new Commentary("Ian botham",
+                "well bowled, length ball, swings outside, wide");
+        ball1.setCommentary(commentary);
+
+        over1.getBalls().add(ball1);
+        scorer1.setScore(ball1, match.getMatchId(), innings.getInningsNumber());
+
+        ball1 = new Ball(1, "BUMRAH", "Aaron Finch");
+        ball1.setRunType(RunType.FIVE_WIDES);
+        ball1.setBallType(BallType.WIDE);
+
+        commentary = new Commentary("Ian botham",
                 "well bowled, length ball, swings outside, wide");
         ball1.setCommentary(commentary);
 
