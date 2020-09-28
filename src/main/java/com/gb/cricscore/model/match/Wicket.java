@@ -1,11 +1,9 @@
 package com.gb.cricscore.model.match;
 
 import com.gb.cricscore.model.people.Player;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
+@Data
 public class Wicket {
     private WicketType wicketType;
     private Player playerOut;
