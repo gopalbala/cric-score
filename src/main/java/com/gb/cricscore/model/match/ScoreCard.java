@@ -2,14 +2,12 @@ package com.gb.cricscore.model.match;
 
 import com.gb.cricscore.exception.InvalidMatch;
 import com.gb.cricscore.repository.DataSink;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 import java.util.HashMap;
 import java.util.Map;
 
-@Getter
-@Setter
+@Data
 public class ScoreCard {
     private Map<String, PlayerScore> playerScores = new HashMap<>();
     private Map<String, BowlerOver> bowlerOvers = new HashMap<>();
@@ -73,6 +71,8 @@ public class ScoreCard {
                 playerScore.setWicketType(ball.getWicket().getWicketType());
                 playerScore.setBowler(ball.getBowledBy());
                 BowlerOver bowlerOver = setBowlerOverForBall(ball);
+                incrementWicketForBall(ball.getBowledBy(), ball.getBallType(),
+                        ball.getWicket().getWicketType());
                 over = bowlerOver.getOverMap().get(ball.getOverNumber());
                 over.getBalls().add(ball);
                 break;
@@ -166,6 +166,7 @@ public class ScoreCard {
                 incrementScore(1);
                 incrementBowlerExtras(ball.getBowledBy(),
                         ball.getBallType(), 1);
+                incrementExtras(1);
                 incrementExtrasInOver(ball.getOverNumber(), 1);
                 break;
             case TWO_WIDES:
@@ -259,6 +260,22 @@ public class ScoreCard {
 
             bowlerOvers.get(bowledBy).getExtrasBowled()
                     .putIfAbsent(ballType, extras);
+    }
+
+    private void incrementWicketForBall(String bowledBy, BallType ballType,
+                                        WicketType wicketType) {
+        if (bowlerOvers.get(bowledBy) == null) {
+            bowlerOvers.putIfAbsent(bowledBy, new BowlerOver(bowledBy));
+        }
+        switch (wicketType) {
+            case LBW:
+            case CAUGHT:
+            case BOWLED:
+            case HIT_WICKET:
+            case STUMPTED:
+                bowlerOvers.get(bowledBy).setWicketsTaken(bowlerOvers.get(bowledBy)
+                        .getWicketsTaken() + 1);
+        }
     }
 
     private void incrementPlayerScore(String player, RunType runType, int score) {
