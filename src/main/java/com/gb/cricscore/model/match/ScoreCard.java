@@ -35,7 +35,7 @@ public class ScoreCard {
         if (DataSink.scoreCardMap.get(matchName) == null) {
             Innings innings = match.getInnings().get(inningsNumber);
             if (innings == null) {
-                innings = new Innings();
+                innings = new Innings(1);
                 match.getInnings().put(inningsNumber, innings);
             }
             ScoreCard scoreCard = new ScoreCard(matchName, inningsNumber);
@@ -106,6 +106,7 @@ public class ScoreCard {
             bowlerOver = new BowlerOver(ball.getBowledBy());
             bowlerOvers.put(ball.getBowledBy(), bowlerOver);
         }
+        bowlerOver.getOverMap().putIfAbsent(ball.getOverNumber(), new Over(ball.getOverNumber()));
         return bowlerOver;
     }
 
@@ -244,13 +245,18 @@ public class ScoreCard {
     }
 
     private void incrementBowlerExtras(String bowledBy, BallType ballType, int extras) {
-        if (bowlerOvers.get(bowledBy).getExtrasBowled().get(ballType)
+        if (bowlerOvers.get(bowledBy) == null) {
+            bowlerOvers.putIfAbsent(bowledBy, new BowlerOver(bowledBy));
+        }
+        if (bowlerOvers.get(bowledBy) != null && bowlerOvers.get(bowledBy).
+                getExtrasBowled().get(ballType)
                 != null) {
 
             int extra = bowlerOvers.get(bowledBy).getExtrasBowled().get(ballType);
             bowlerOvers.get(bowledBy).getExtrasBowled()
                     .put(ballType, extra + extras);
         } else
+
             bowlerOvers.get(bowledBy).getExtrasBowled()
                     .putIfAbsent(ballType, extras);
     }
