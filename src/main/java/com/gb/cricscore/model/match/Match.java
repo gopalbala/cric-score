@@ -15,7 +15,7 @@ import java.util.Map;
 
 @Getter
 @Setter
-public class Match {
+public abstract class Match {
     private String matchId;
     private Tournament tournament;
     private final TeamsBetween teamsBetween;
