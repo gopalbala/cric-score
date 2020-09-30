@@ -16,7 +16,7 @@ public class CricScoreMain {
         Tournament tournament = new Tournament("Gavaskar - Border Series",
                 LocalDateTime.now().plusDays(7), LocalDateTime.now().plusDays(21));
 
-        Team indianTeam = new Team("TEAM INDIA", "Gavaskar - Border Series");
+        Team indianTeam = new Team("TEAM INDIA", tournament.getName());
         indianTeam.getPlayers().addAll(getIndianSquad());
 
         indianTeam.getSupportStaffs().add(new Coach("Gary kirsten"));
@@ -83,7 +83,7 @@ public class CricScoreMain {
             e.printStackTrace();
         }
 
-        Match match = new Match(new TeamsBetween(indianTeam, ausTeam));
+        Match match = new OdiMatch(new TeamsBetween(indianTeam, ausTeam));
         match.setMatchId("BGINDVSAUSM1");
         match.setTournament(tournament);
         match.setVenue("Bangalore Chinnaswamy stadium");
